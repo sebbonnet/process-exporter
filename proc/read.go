@@ -197,7 +197,11 @@ type (
 )
 
 func (ii IDInfo) String() string {
-	return fmt.Sprintf("%+v:%+v", ii.ID, ii.Static)
+	return fmt.Sprintf("%+v: #Static: %+v, #Metrics:%+v", ii.ID, ii.Static, ii.Metrics)
+}
+
+func (m Metrics) String() string {
+	return fmt.Sprintf("CPU user: %f, CPU system: %f, RSS: %d, Virtual: %d", m.CPUUserTime, m.CPUSystemTime, m.ResidentBytes, m.VirtualBytes)
 }
 
 // Add adds c2 to the counts.

@@ -160,6 +160,11 @@ func (t *Tracker) track(groupName string, idinfo IDInfo) {
 		static:    idinfo.Static,
 		metrics:   idinfo.Metrics,
 	}
+
+	if t.debug {
+		log.Printf("CUSTOM Tracking proc, groupname: %s, idinfo: %+v", groupName, idinfo)
+	}
+
 	if len(idinfo.Threads) > 0 {
 		tproc.threads = make(map[ThreadID]trackedThread)
 		for _, thr := range idinfo.Threads {
